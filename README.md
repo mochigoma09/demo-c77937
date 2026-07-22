@@ -1,2 +1,3 @@
 # demo-c77937
-Auto generated demo site for Nailsalon ma:kana
+
+AIによって自動生成された Nailsalon ma:kana 様向けのデモサイトです。
