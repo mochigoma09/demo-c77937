@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Nailsalon ma:kana｜ネイルサロン</title>
+<meta name="description" content="板橋区のネイルサロン ma:kana。丁寧なカウンセリングと繊細なアートで、あなたの指先に特別な輝きを。美しいデザインと心地よい時間をお約束します。">
+<link rel="canonical" href="https://mochigoma09.github.io/demo-c77937/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Nailsalon ma:kana">
+<meta property="og:title" content="Nailsalon ma:kana｜ネイルサロン">
+<meta property="og:description" content="板橋区のネイルサロン ma:kana。丁寧なカウンセリングと繊細なアートで、あなたの指先に特別な輝きを。美しいデザインと心地よい時間をお約束します。">
+<meta property="og:url" content="https://mochigoma09.github.io/demo-c77937/">
+<meta property="og:image" content="">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nailsalon ma:kana｜ネイルサロン">
+<meta name="twitter:description" content="板橋区のネイルサロン ma:kana。丁寧なカウンセリングと繊細なアートで、あなたの指先に特別な輝きを。美しいデザインと心地よい時間をお約束します。">
+<meta name="twitter:image" content="">
+
+<!-- 構造化データ（BeautySalon は preset の schema.orgサブタイプ。住所/電話は実値へ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://mochigoma09.github.io/demo-c77937/#org", "name": "Nailsalon ma:kana", "url": "https://mochigoma09.github.io/demo-c77937/" },
+    { "@type": "WebSite", "@id": "https://mochigoma09.github.io/demo-c77937/#site", "url": "https://mochigoma09.github.io/demo-c77937/", "name": "Nailsalon ma:kana", "publisher": { "@id": "https://mochigoma09.github.io/demo-c77937/#org" } },
+    { "@type": "BeautySalon", "@id": "https://mochigoma09.github.io/demo-c77937/#biz", "name": "Nailsalon ma:kana", "url": "https://mochigoma09.github.io/demo-c77937/", "telephone": "080-9004-5958", "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "板橋区", "streetAddress": "徳丸３丁目１８−１５ 第２北野ビル 「blossom東武練馬」店内" } }
+  ]
+}
+</script>
+
+<!-- フォント（コンセプトで差し替え） / 土台CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   base.css — 全デモ共通の「不変の土台」（品質の担保。見た目の個性はここに持たせない）
+   各デモHTMLは必ずこれを読み込み、レイアウト/世界観は自由に作る。
+   固定するのは：リセット / トークンの“契約”（変数名）/ a11y / 再利用部品 のみ。
+   ============================================================ */
+
+/* --- デザイントークンの契約（値は案件コンセプトで :root を上書きする） --- */
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent:  #b89150;
+  --color-text:    #2a2e35;
+  --color-bg:      #ffffff;
+  --color-surface: #f5f7fa;
+  --color-line:    rgba(0, 0, 0, 0.12);
+  --font-heading:  "Noto Serif JP", serif;
+  --font-body:     system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  --radius:        14px;
+  --container:     1120px;
+}
+
+/* --- reset（wp-theme-starter から移植） --- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+img, svg, video, picture { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.4; }
+ul, ol { list-style: none; padding: 0; }
+
+/* --- a11y（不変） --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* --- 再利用部品（配色/形はトークン依存＝案件で変わる。構造だけ共通） --- */
+.l-wrapper { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 20px; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 32px; font-weight: 700; border-radius: 999px; color: #fff; background: var(--color-primary); transition: transform .25s, box-shadow .25s; }
+.c-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+/* 全画面ハンバーガー（1024px以下） */
+.c-hamburger { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 1001; }
+.c-hamburger__bars, .c-hamburger__bars::before, .c-hamburger__bars::after { content: ""; display: block; width: 24px; height: 2px; background: var(--color-text); transition: transform .3s, opacity .3s; }
+.c-hamburger__bars { position: relative; }
+.c-hamburger__bars::before { position: absolute; top: -7px; left: 0; }
+.c-hamburger__bars::after  { position: absolute; top: 7px;  left: 0; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars { background: transparent; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::before { transform: translateY(7px) rotate(45deg); }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+.c-nav { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; font-family: var(--font-heading); font-size: 1.2rem; }
+.c-nav.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 1025px) {
+  .c-hamburger { display: none; }
+  .c-nav { position: static; flex-direction: row; gap: 32px; background: none; backdrop-filter: none; opacity: 1; visibility: visible; font-size: 1rem; }
+}
+
+/* スクロールリビール（nav.jsがJSで付与する。JS無効環境では何も付かず常に表示） */
+.js-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal.is-inview { opacity: 1; transform: none; }
+
+/* 追従フローティングCTA（1024px以下） */
+.c-floating-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 800; display: flex; justify-content: center; padding: 0 16px 14px; pointer-events: none; }
+.c-floating-cta .c-btn { pointer-events: auto; width: 100%; max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+body { padding-bottom: 84px; } /* CTA分の余白 */
+@media (min-width: 1025px) { .c-floating-cta { display: none; } body { padding-bottom: 0; } }
+
+</style>
+<style>
+:root {
+  --color-primary: #A87C6F;
+  --color-accent: #F2E7DC;
+  --color-surface: #FBFAF8;
+  --color-text: #333333;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+  --radius: 4px 40px;
+  --curve-path: ellipse(80% 60% at 50% 40%);
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* Typography Hierarchy */
+.u-en { font-family: var(--font-heading); font-weight: 500; }
+.u-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); display: block; margin-bottom: 1rem; }
+.u-title-huge { font-size: clamp(3.5rem, 12vw, 8.5rem); line-height: 0.9; letter-spacing: -0.02em; }
+.u-title-section { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 2rem; }
+
+/* Header */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1100;
+}
+.c-logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.1em; }
+
+/* Layout Utilities */
+.p-section { padding: clamp(4rem, 10vw, 8rem) 0; position: relative; }
+.p-grid-asymmetric {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Motif: Curve Decor */
+.c-curve-decor {
+  position: absolute;
+  z-index: -1;
+  background: var(--color-accent);
+  opacity: 0.4;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+/* Hero */
+.p-hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
+.p-hero__content { grid-column: 1 / 8; z-index: 2; }
+.p-hero__image-wrap { 
+  grid-column: 7 / 13; 
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 200px 200px 0 0;
+  overflow: hidden;
+}
+.p-hero__image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.p-hero__copy { font-size: 1.125rem; margin-top: 2rem; max-width: 400px; }
+
+/* Menu */
+.p-menu__list { grid-column: 2 / 12; border-top: 1px solid var(--color-primary); padding-top: 3rem; }
+.p-menu__item { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: baseline; 
+  padding: 1.5rem 0; 
+  border-bottom: 1px solid rgba(168, 124, 111, 0.2); 
+}
+.p-menu__item-name { font-size: 1.25rem; font-weight: 500; }
+.p-menu__item-price { font-family: var(--font-heading); font-size: 1.5rem; }
+.p-menu__desc { font-size: 0.875rem; opacity: 0.7; margin-top: 0.5rem; grid-column: 1 / -1; }
+
+/* Gallery */
+.p-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 15vw;
+  gap: 20px;
+}
+.p-gallery__item { overflow: hidden; border-radius: var(--radius); }
+.p-gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.p-gallery__item:hover img { transform: scale(1.05); }
+.p-gallery__item--1 { grid-column: 1 / 4; grid-row: 1 / 4; }
+.p-gallery__item--2 { grid-column: 4 / 7; grid-row: 1 / 3; }
+.p-gallery__item--3 { grid-column: 4 / 6; grid-row: 3 / 5; }
+
+/* Staff */
+.p-staff__inner { grid-column: 2 / 12; display: flex; align-items: center; gap: 4rem; }
+.p-staff__img { flex: 0 0 40%; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; }
+.p-staff__img img { width: 100%; height: 100%; object-fit: cover; }
+.p-staff__text { flex: 1; }
+
+/* Voice */
+.p-voice__card { 
+  grid-column: span 6; 
+  background: #fff; 
+  padding: 3rem; 
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: 0 10px 30px rgba(168, 124, 111, 0.05);
+}
+.p-voice__card::before {
+  content: "“";
+  position: absolute;
+  top: -1rem;
+  left: 2rem;
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+/* Access */
+.p-access__info { grid-column: 1 / 6; }
+.p-access__map { grid-column: 6 / 13; height: 400px; background: var(--color-accent); border-radius: var(--radius); overflow: hidden; }
+.p-access__map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.1) sepia(0.2); }
+
+/* Reservation */
+.p-reservation { background: var(--color-primary); color: #fff; text-align: center; }
+.p-reservation .u-label { color: var(--color-accent); }
+
+/* CTA */
+.c-floating-cta .c-btn { background: var(--color-primary); color: #fff; }
+
+@media (max-width: 1024px) {
+  .p-hero__content { grid-column: 1 / -1; margin-bottom: 3rem; }
+  .p-hero__image-wrap { grid-column: 1 / -1; }
+  .p-staff__inner { flex-direction: column; gap: 2rem; }
+  .p-staff__img { flex: 0 0 100%; width: 280px; }
+  .p-voice__card { grid-column: 1 / -1; }
+  .p-access__info, .p-access__map { grid-column: 1 / -1; }
+}
+</style>
+<style>:root{--color-primary:#A87C6F;--color-accent:#F2E7DC;--color-surface:#FBFAF8;--color-text:#333333;--font-heading:'Playfair Display', serif;--font-body:'Noto Sans JP', sans-serif;--radius:4px / 8px;}</style>
+</head>
+<body>
+
+<h1 class="sr-only">Nailsalon ma:kana｜板橋区のプライベートネイルサロン</h1>
+
+<header>
+  <div class="c-logo">ma:kana</div>
+  <button class="c-hamburger js-nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="メニューを開く">
+    <span class="c-hamburger__bars"></span>
+  </button>
+  <nav class="c-nav" id="nav">
+    <a href="#hero">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#staff">Staff</a>
+    <a href="#access">Access</a>
+    <a href="#" class="c-btn">Reservation</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="p-hero" data-section="hero" id="hero">
+    <div class="l-wrapper">
+      <div class="p-grid-asymmetric">
+        <div class="p-hero__content">
+          <span class="u-label js-reveal">Private Nail Salon</span>
+          <h2 class="u-title-huge u-en js-reveal">Serene<br>Beauty</h2>
+          <p class="p-hero__copy js-reveal">指先に宿る、静謐な美。板橋区・徳丸のプライベート空間で、あなただけの個性を引き立てる繊細な手仕事を。</p>
+          <div class="js-reveal" style="margin-top: 3rem;">
+            <a href="#" class="c-btn">Book Appointment</a>
+          </div>
+        </div>
+        <div class="p-hero__image-wrap js-reveal">
+          <img src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwaGFuZHMlMjBob2xkaW5nJTIwZmxvd2VyfGVufDB8MHx8fDE3ODQ3MTkxNjB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="繊細なネイルを施した手元">
+        </div>
+      </div>
+    </div>
+    <div class="c-curve-decor" style="width: 60vw; height: 60vw; top: -10vw; right: -10vw;"></div>
+  </section>
+
+  <!-- Menu -->
+  <section class="p-section" data-section="menu" id="menu">
+    <div class="l-wrapper">
+      <div class="p-grid-asymmetric">
+        <div style="grid-column: 1 / 6;">
+          <span class="u-label">Service</span>
+          <h2 class="u-title-section u-en">Menu & Price</h2>
+          <p>丁寧なカウンセリングに基づき、自爪の健康を第一に考えた施術をご提案いたします。</p>
+        </div>
+        <div class="p-menu__list">
+          <div class="p-menu__item js-reveal">
+            <span class="p-menu__item-name">Hand One Color</span>
+            <span class="p-menu__item-price">¥6,600〜</span>
+            <p class="p-menu__desc">シンプルだからこそ際立つ、フォルムの美しさと艶感。</p>
+          </div>
+          <div class="p-menu__item js-reveal">
+            <span class="p-menu__item-name">Design Course</span>
+            <span class="p-menu__item-price">¥8,800〜</span>
+            <p class="p-menu__desc"> ma:kanaらしい繊細なアートで、季節や個性を表現します。</p>
+          </div>
+          <div class="p-menu__item js-reveal">
+            <span class="p-menu__item-name">Nail Care</span>
+            <span class="p-menu__item-price">¥4,400〜</span>
+            <p class="p-menu__desc">指先を健やかに整え、本来の美しさを引き出すケアメニュー。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="p-section" data-section="gallery" id="gallery">
+    <div class="l-wrapper">
+      <div class="p-grid-asymmetric" style="margin-bottom: 3rem;">
+        <div style="grid-column: 7 / 13; text-align: right;">
+          <span class="u-label">Artistry</span>
+          <h2 class="u-title-section u-en">Gallery</h2>
+        </div>
+      </div>
+      <div class="p-gallery__grid">
+        <div class="p-gallery__item p-gallery__item--1 js-reveal">
+          <img src="https://images.unsplash.com/photo-1646335940123-b9008ebb358c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxkZWxpY2F0ZSUyMG5haWwlMjBhcnQlMjBjbG9zZXVwfGVufDB8MHx8fDE3ODQ3MTkxNTh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="繊細なネイルアートのアップ">
+        </div>
+        <div class="p-gallery__item p-gallery__item--2 js-reveal">
+          <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxtYW5pY3VyZSUyMHByb2Nlc3MlMjBzb2Z0JTIwbGlnaHR8ZW58MHwwfHx8MTc4NDcxOTE1OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="施術の様子">
+        </div>
+        <div class="p-gallery__item p-gallery__item--3 js-reveal">
+          <img src="https://images.unsplash.com/photo-1613380833630-2b2c708b1814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHxkZWxpY2F0ZSUyMG5haWwlMjBhcnQlMjBjbG9zZXVwfGVufDB8MHx8fDE3ODQ3MTkxNTh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="エレガントなネイルデザイン">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff -->
+  <section class="p-section" data-section="staff" id="staff">
+    <div class="l-wrapper">
+      <div class="p-staff__inner">
+        <div class="p-staff__img js-reveal">
+          <img src="https://images.unsplash.com/photo-1770778218742-04e390758bf1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwyfHxlbGVnYW50JTIwaGFuZHMlMjBob2xkaW5nJTIwZmxvd2VyfGVufDB8MHx8fDE3ODQ3MTkxNjB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="ネイリストの手元">
+        </div>
+        <div class="p-staff__text js-reveal">
+          <span class="u-label">Ownerist</span>
+          <h2 class="u-title-section">想いを込めた、<br>一筆の重なり。</h2>
+          <p>ma:kana（マカナ）は、ハワイ語で「贈り物」を意味します。お客様一人ひとりの個性を大切に、日々の生活に彩りを添えるような、特別な贈り物としてのネイルをご提供したい。そんな想いで、板橋の地で筆を執っています。</p>
+        </div>
+      </div>
+    </div>
+    <div class="c-curve-decor" style="width: 40vw; height: 40vw; bottom: -5vw; left: -10vw; background: var(--color-primary); opacity: 0.1;"></div>
+  </section>
+
+  <!-- Voice -->
+  <section class="p-section" data-section="voice" id="voice">
+    <div class="l-wrapper">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <span class="u-label">Feedback</span>
+        <h2 class="u-title-section u-en">Guest Voices</h2>
+      </div>
+      <div class="p-grid-asymmetric">
+        <div class="p-voice__card js-reveal">
+          <p>「いつも曖昧なオーダーをしてしまうのですが、想像以上に素敵なデザインに仕上げてくださいます。施術中の会話も楽しく、心からリラックスできる時間です。」</p>
+          <p style="margin-top: 1.5rem; font-weight: 700; font-size: 0.875rem;">— 30代 女性</p>
+        </div>
+        <div class="p-voice__card js-reveal">
+          <p>「爪の形にコンプレックスがあったのですが、ma:kanaさんに通うようになってから自分の手が好きになれました。丁寧なケアのおかげで持ちも凄く良いです。」</p>
+          <p style="margin-top: 1.5rem; font-weight: 700; font-size: 0.875rem;">— 40代 女性</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Access -->
+  <section class="p-section" data-section="access" id="access">
+    <div class="l-wrapper">
+      <div class="p-grid-asymmetric">
+        <div class="p-access__info js-reveal">
+          <span class="u-label">Location</span>
+          <h2 class="u-title-section u-en">Access</h2>
+          <dl style="margin-top: 2rem;">
+            <dt style="font-weight: 700; margin-bottom: 0.5rem;">Address</dt>
+            <dd style="margin-bottom: 1.5rem;">東京都板橋区徳丸３丁目１８−１５<br>第２北野ビル 「blossom東武練馬」店内</dd>
+            <dt style="font-weight: 700; margin-bottom: 0.5rem;">Open</dt>
+            <dd style="margin-bottom: 1.5rem;">10:00 - 19:00（不定休）</dd>
+            <dt style="font-weight: 700; margin-bottom: 0.5rem;">Contact</dt>
+            <dd>080-9004-5958</dd>
+          </dl>
+        </div>
+        <div class="p-access__map js-reveal">
+          <!-- Google Maps Placeholder -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.747144136272!2d139.6616!3d35.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018ed9333333333%3A0x3333333333333333!2z44CSMTc1LTAwODMg5p2x5Lqs6YO95p2_5qmL5Yy65b6z5Li477yT5LiB55uu77yR77yY4oiS77yR77yV!5e0!3m2!1sja!2sjp!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation -->
+  <section class="p-section p-reservation" data-section="reservation" id="reservation">
+    <div class="l-wrapper">
+      <div class="js-reveal">
+        <span class="u-label">Reservation</span>
+        <h2 class="u-title-section u-en">Book Your Time</h2>
+        <p style="max-width: 600px; margin: 0 auto 3rem;">ご予約は24時間受付のオンライン予約、またはお電話にて承っております。<br>あなたにお会いできるのを、楽しみにお待ちしております。</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+          <a href="#" class="c-btn" style="background: #fff; color: var(--color-primary);">Online Booking</a>
+          <a href="tel:080-9004-5958" class="c-btn" style="background: transparent; border: 1px solid #fff;">Call Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="p-section" data-section="cta" style="background: var(--color-surface); text-align: center; padding: 4rem 0;">
+    <div class="l-wrapper js-reveal">
+      <p class="u-en" style="letter-spacing: 0.3em; opacity: 0.5;">NAILSALON MA:KANA</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="l-wrapper" style="padding: 4rem 0; border-top: 1px solid var(--color-accent); text-align: center;">
+    <div class="c-logo" style="margin-bottom: 1.5rem;">ma:kana</div>
+    <p style="font-size: 0.75rem; opacity: 0.6;">&copy; <span id="y"></span> Nailsalon ma:kana. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<div class="c-floating-cta">
+  <a href="#" class="c-btn">ご予約はこちら</a>
+</div>
+
+<script>
+/* nav.js — 全画面ハンバーガーの開閉（背後スクロールロック）。全デモ共通の不変挙動。 */
+(function () {
+  var t = document.querySelector('.js-nav-toggle');
+  var n = document.getElementById('nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', String(!open));
+      n.classList.toggle('is-open', !open);
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; } });
+  }
+  var y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+
+  /* スクロールリビール（抑制的モーション）：各 data-section の直下要素を
+     ふわっと表示。クラスはJSで付与するのでJS無効環境では常に見える。
+     prefers-reduced-motion は base.css 側の全体無効化が効く。 */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-inview'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-section]').forEach(function (sec) {
+      var kids = Array.prototype.slice.call(sec.children);
+      kids.forEach(function (el, i) {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        io.observe(el);
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
